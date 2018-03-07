@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" class="input">
+<button class="button">
+    点击去地图
+</button>
+<div class="one" style="margin-left: 479px;display: none">
+    <iframe id="two" style="width: 100%;height: 500px" src="POI选点获取.html" frameborder="0"></iframe>
+</div>
+</body>
+
+<script>
+  var a = document.getElementsByClassName('input');
+  var b = document.getElementsByClassName('button');
+  var c = document.getElementsByClassName('one');
+  b[0].onclick=function () {
+      c[0].style.display='block';
+      setInterval(function () {
+          var op = window.parent.document.getElementById('two').contentWindow.aa;
+          console.log(op.name);
+          a[0].value=op.name;
+      },2000);
+
+  }
+
+
+</script>
+</html>
