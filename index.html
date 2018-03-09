@@ -18,13 +18,27 @@
   var a = document.getElementsByClassName('input');
   var b = document.getElementsByClassName('button');
   var c = document.getElementsByClassName('one');
+
   b[0].onclick=function () {
       c[0].style.display='block';
+      var last='';
       setInterval(function () {
           var op = window.parent.document.getElementById('two').contentWindow.aa;
-          console.log(op.name);
-          a[0].value=op.name;
-      },2000);
+          if(op.name!=last){
+              a[0].value=op.name;
+              console.log(op);
+              var aa = new XMLHttpRequest();
+              aa.open('get','data.json');
+              aa.send();
+              aa.onreadystatechange=function () {
+                  if(aa.readyState==4&&aa.status==200){
+                      console.log(aa.responseText);
+                  }
+              }
+
+          }
+          last = op.name;
+      },2100);
 
   }
 
